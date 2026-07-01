@@ -35,10 +35,11 @@ export default function Header({ onCopyIp }: HeaderProps) {
       {/* Top Header Bar - Watermark Kredit Pengembang */}
       <div 
         id="top-header"
-        className="w-full bg-[#050505] border-b border-border-dark py-1.5 px-4 text-center"
+        className="w-full bg-[#050505] border-b border-border-dark py-2 px-4 text-center"
       >
         <p className="text-[10px] md:text-xs text-text-secondary font-mono tracking-wider">
-          Developed by{" "}
+          <span className="text-primary font-bold">Ingin buat website Minecraft premium seperti ini?</span>{" "}
+          Hubungi{" "}
           <span className="text-white hover:text-primary transition-colors font-semibold">
             {SERVER_CONFIG.developer.name}
           </span>{" "}
@@ -47,7 +48,7 @@ export default function Header({ onCopyIp }: HeaderProps) {
             href={SERVER_CONFIG.developer.whatsappUrl} 
             target="_blank" 
             rel="noopener noreferrer"
-            className="text-text-secondary hover:text-primary transition-colors underline decoration-dotted underline-offset-2"
+            className="text-text-secondary hover:text-primary transition-colors underline decoration-dotted underline-offset-2 font-bold"
             aria-label="Hubungi pengembang melalui WhatsApp"
           >
             {SERVER_CONFIG.developer.whatsapp}
