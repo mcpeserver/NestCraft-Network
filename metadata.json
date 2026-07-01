@@ -1,0 +1,6 @@
+{
+  "name": "NestCraft Network",
+  "description": "Landing page premium, futuristik, dan responsif untuk server Minecraft Indonesia, NestCraft Network.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
