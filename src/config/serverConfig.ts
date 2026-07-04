@@ -21,7 +21,9 @@ export const SERVER_CONFIG = {
   developer: {
     name: "RAN DEV",
     whatsapp: "0895602592430",
-    whatsappUrl: "https://wa.me/62895602592430"
+    whatsappUrl: "https://wa.me/62895602592430",
+    portfolioUrl: "https://sfl.gl/x2ic",
+    portfolioLabel: "Lihat Katalog Server Lain 🌐"
   },
   
   // Game Modes

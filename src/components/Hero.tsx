@@ -26,12 +26,19 @@ export default function Hero({ onCopyIp }: HeroProps) {
   return (
     <section 
       id="hero" 
-      className="relative min-h-[90vh] flex flex-col items-center justify-center pt-24 pb-16 px-4 overflow-hidden"
+      className="relative min-h-[95vh] flex flex-col items-center justify-center pt-36 sm:pt-40 md:pt-48 pb-16 px-4 overflow-hidden"
     >
       {/* 1. Cinematic Background & Effects */}
+      {/* Live Cinematic Minecraft Background Image */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-[0.28] mix-blend-screen pointer-events-none z-0"
+        style={{ backgroundImage: "url('/hero-bg.jpg')" }}
+      />
+      <div className="absolute inset-0 bg-gradient-to-b from-bg-dark/40 via-bg-dark/80 to-bg-dark z-0 pointer-events-none" />
+
       {/* Digital grid layout overlay */}
       <div className="absolute inset-0 cyber-grid-red opacity-60 z-0 pointer-events-none" />
-      <div className="absolute inset-0 cyber-grid opacity-30 z-0 pointer-events-none" />
+      <div className="absolute inset-0 cyber-grid opacity-35 z-0 pointer-events-none" />
 
       {/* Cinematic Red Glow/Lighting */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[550px] md:h-[550px] rounded-full bg-[#D61F26] opacity-[0.12] blur-[80px] md:blur-[140px] pointer-events-none z-0 animate-pulse-glow" />

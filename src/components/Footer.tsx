@@ -55,7 +55,7 @@ export default function Footer() {
           </div>
 
           {/* Watermark Kredit Pengembang - Sangat Penting Sesuai Mandat */}
-          <div className="bg-surface-dark/40 border border-border-dark py-2 px-4 rounded-md">
+          <div className="bg-surface-dark/40 border border-border-dark py-3 px-5 rounded-md flex flex-col md:flex-row items-center gap-2">
             <p className="text-xs text-text-secondary font-mono tracking-wide">
               Website dikembangkan oleh{" "}
               <span className="text-white font-semibold">{SERVER_CONFIG.developer.name}</span>{" "}
@@ -70,6 +70,16 @@ export default function Footer() {
                 {SERVER_CONFIG.developer.whatsapp}
               </a>
             </p>
+            <span className="text-text-secondary font-mono text-xs hidden md:inline">•</span>
+            <a
+              href={SERVER_CONFIG.developer.portfolioUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary hover:text-white transition-all duration-300 font-bold font-sans text-xs flex items-center gap-1 border border-primary/20 bg-primary/5 px-2 py-0.5 rounded shadow-sm shadow-primary/5 hover:bg-primary/10 hover:border-primary/40"
+              aria-label="Lihat katalog server Minecraft lainnya"
+            >
+              Katalog Server Lain ➔
+            </a>
           </div>
         </div>
       </div>

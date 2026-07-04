@@ -12,7 +12,7 @@ export default function Header({ onCopyIp }: HeaderProps) {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 40) {
+      if (window.scrollY > 20) {
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
@@ -26,16 +26,27 @@ export default function Header({ onCopyIp }: HeaderProps) {
     setIsMobileMenuOpen(false);
     const element = document.getElementById(id);
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+      const headerOffset = window.innerWidth < 640 ? 140 : 120;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.scrollY - headerOffset;
+      
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
     }
   };
 
   return (
-    <header className="w-full z-40 relative">
+    <header className={`w-full z-50 fixed top-0 left-0 transition-all duration-300 ${
+      isScrolled 
+        ? "bg-bg-dark/95 backdrop-blur-md border-b border-border-dark/80 shadow-xl shadow-black/40" 
+        : "bg-bg-dark/40 backdrop-blur-sm border-b border-border-dark/10"
+    }`}>
       {/* Top Header Bar - Watermark Kredit Pengembang */}
       <div 
         id="top-header"
-        className="w-full bg-[#050505] border-b border-border-dark py-2 px-4 text-center"
+        className="w-full bg-[#050505]/95 border-b border-border-dark/50 py-2 px-4 flex flex-col sm:flex-row items-center justify-center gap-2"
       >
         <p className="text-[10px] md:text-xs text-text-secondary font-mono tracking-wider">
           <span className="text-primary font-bold">Ingin buat website Minecraft premium seperti ini?</span>{" "}
@@ -54,16 +65,24 @@ export default function Header({ onCopyIp }: HeaderProps) {
             {SERVER_CONFIG.developer.whatsapp}
           </a>
         </p>
+        <div className="flex items-center">
+          <span className="text-text-secondary font-mono text-xs hidden sm:inline mr-2">•</span>
+          <a 
+            href={SERVER_CONFIG.developer.portfolioUrl} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="inline-flex items-center gap-1 text-primary hover:text-white transition-all duration-300 border border-primary/40 bg-primary/10 hover:bg-primary px-2.5 py-0.5 rounded text-[9px] sm:text-[10px] font-bold tracking-wider font-sans uppercase shadow-sm shadow-primary/10"
+            aria-label="Lihat katalog server Minecraft lainnya"
+          >
+            {SERVER_CONFIG.developer.portfolioLabel} ➔
+          </a>
+        </div>
       </div>
 
       {/* Main Navbar */}
       <nav
         id="navbar"
-        className={`w-full transition-all duration-300 ${
-          isScrolled 
-            ? "fixed top-0 left-0 bg-bg-dark/85 backdrop-blur-md border-b border-border-dark/50 shadow-lg" 
-            : "absolute top-auto bg-transparent border-b border-transparent"
-        }`}
+        className="w-full"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 md:h-20">
@@ -183,9 +202,6 @@ export default function Header({ onCopyIp }: HeaderProps) {
           </div>
         )}
       </nav>
-      
-      {/* Spacer to avoid layout jump when navbar fixes */}
-      {isScrolled && <div className="h-16 md:h-20" />}
     </header>
   );
 }

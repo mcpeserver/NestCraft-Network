@@ -1,13 +1,26 @@
 # NestCraft Network - Landing Page Premium & Modern
 
 <p align="center">
-  <img src="public/logo.png" alt="NestCraft Network Logo" width="180" height="180" style="border-radius: 16px; box-shadow: 0 10px 30px rgba(214, 31, 38, 0.3);" />
+  <img src="public/logo.png" alt="NestCraft Network Logo" width="180" height="180" style="border-radius: 16px; box-shadow: 0 10px 30px rgba(214, 31, 38, 0.35);" />
 </p>
 
 <p align="center">
   <strong>Server Minecraft Indonesia Premium, Futuristik, & Modern</strong>
 </p>
 
+<p align="center">
+  <a href="https://sfl.gl/x2ic" target="_blank">
+    <img src="https://img.shields.io/badge/RAN%20DEV-WhatsApp%20Contact-emerald?style=for-the-badge&logo=whatsapp" alt="Contact Developer" />
+  </a>
+  <a href="https://sfl.gl/x2ic" target="_blank">
+    <img src="https://img.shields.io/badge/Katalog%20Website-Minecraft-red?style=for-the-badge&logo=minecraft" alt="Katalog Website" />
+  </a>
+  <img src="https://img.shields.io/badge/Vercel-Ready-black?style=for-the-badge&logo=vercel" alt="Vercel Ready" />
+</p>
+
+---
+
+## 🎨 Deskripsi Proyek
 Landing Page premium, minimalis, futuristik, dan responsif untuk server Minecraft Indonesia, **NestCraft Network**. Desain web ini terinspirasi dari situs game modern dan esports profesional, menggunakan komposisi bersih, banyak *negative space*, tipografi yang tegas, serta animasi yang halus.
 
 Web ini sepenuhnya kompatibel untuk dijalankan di lokal maupun dideploy langsung ke **Vercel**, **GitHub Pages**, **Cloud Run**, atau platform web modern lainnya.
@@ -22,13 +35,15 @@ Web ini sepenuhnya kompatibel untuk dijalankan di lokal maupun dideploy langsung
 - **Border**: Abu-abu (#2A2A2A)
 - **Text**: Putih (#FFFFFF)
 - **Secondary Text**: Abu terang (#B8B8B8)
-- **Desain**: Efek *glassmorphism* tipis, bayangan lembut, sudut melengkung modern, visual grid fiksi-ilmiah, neon halus merah, dan pencahayaan sinematik premium.
+- **Desain**: Efek *glassmorphism* tipis, bayangan lembut, sudut melengkung modern, visual grid fiksi-ilmiah, neon halus merah, dan pencahayaan sinematik premium dengan **Hero Background Image** berkualitas tinggi bertema Minecraft digital.
 
 ---
 
 ## 🚀 Fitur Utama
 
 - ⚡ **Desain Esports Futuristik**: Identitas visual orisinal yang jauh dari kesan medieval atau fantasi.
+- 🖼️ **Cinematic Background**: Latar belakang berkualitas tinggi dengan nuansa digital modern Minecraft di Hero Section (`/public/hero-bg.jpg`).
+- 🌐 **Katalog Portfolio Developer**: Tombol dan tautan eksternal ke [Katalog Web Server Minecraft RAN DEV](https://sfl.gl/x2ic) di bagian Top Header Bar dan Footer.
 - 📱 **Fully Responsive**: Nyaman diakses dari perangkat mobile (smartphone), tablet, hingga monitor desktop ultra-lebar.
 - 🔗 **Cross-Platform Connection Info**: Kartu informasi IP interaktif untuk Java & Bedrock Edition lengkap dengan status online server yang *real-time*.
 - 📋 **Satu-Klik Salin IP**: Tombol interaktif untuk menyalin IP Java (`minenest.my.id`) dan IP Bedrock beserta Port (`25441`).
@@ -43,7 +58,11 @@ Web ini sepenuhnya kompatibel untuk dijalankan di lokal maupun dideploy langsung
 
 ```bash
 ├── public/                 # File aset statis publik
-│   └── logo.png            # Logo utama NestCraft Network
+│   ├── logo.png            # Logo utama NestCraft Network
+│   ├── hero-bg.jpg         # Background sinematik Hero Section
+│   ├── manifest.webmanifest# File konfigurasi Progressive Web App (PWA)
+│   ├── sitemap.xml         # Peta situs untuk optimasi Google Crawling
+│   └── robots.txt          # Panduan indeks mesin pencari
 ├── src/
 │   ├── components/         # Komponen UI modular
 │   │   ├── Header.tsx      # Bilah navigasi & watermark kredit pengembang atas
@@ -62,7 +81,12 @@ Web ini sepenuhnya kompatibel untuk dijalankan di lokal maupun dideploy langsung
 ├── index.html              # Template HTML utama dengan Meta Tag & SEO Schema
 ├── package.json            # Daftar dependensi & npm scripts
 ├── tsconfig.json           # Konfigurasi sistem TypeScript compiler
-└── vite.config.ts          # Konfigurasi bundler Vite
+├── vite.config.ts          # Konfigurasi bundler Vite
+├── CONTRIBUTING.md         # Panduan kontribusi GitHub
+├── CODE_OF_CONDUCT.md      # Kode etik komunitas GitHub
+├── SECURITY.md             # Kebijakan keamanan server
+├── CHANGELOG.md            # Riwayat perubahan rilis versi
+└── MASTER_PROMPT.md        # Prompt universal super lengkap buatan developer
 ```
 
 ---
@@ -119,6 +143,7 @@ Web ini dirancang dan dikembangkan dengan penuh perhatian terhadap kenyamanan pe
 
 - **Pengembang**: RAN DEV
 - **WhatsApp**: [0895602592430](https://wa.me/62895602592430)
+- **Katalog Web Server**: [Lihat Server Lainnya 🌐](https://sfl.gl/x2ic)
 
 Jika Anda ingin menyesuaikan IP server, link Discord, atau detail mode game, silakan ubah file `/src/config/serverConfig.ts`.
 
