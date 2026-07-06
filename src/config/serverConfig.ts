@@ -23,7 +23,10 @@ export const SERVER_CONFIG = {
     whatsapp: "0895602592430",
     whatsappUrl: "https://wa.me/62895602592430",
     portfolioUrl: "https://sfl.gl/x2ic",
-    portfolioLabel: "Lihat Katalog Server Lain 🌐"
+    portfolioLabel: "Lihat Katalog Server Lain 🌐",
+    communityName: "MCPE Server Indonesia",
+    communityUrl: "https://discord.gg/9KUN2byKRM",
+    communityLabel: "Komunitas Developer 👥"
   },
   
   // Game Modes

@@ -71,15 +71,26 @@ export default function Footer() {
               </a>
             </p>
             <span className="text-text-secondary font-mono text-xs hidden md:inline">•</span>
-            <a
-              href={SERVER_CONFIG.developer.portfolioUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-primary hover:text-white transition-all duration-300 font-bold font-sans text-xs flex items-center gap-1 border border-primary/20 bg-primary/5 px-2 py-0.5 rounded shadow-sm shadow-primary/5 hover:bg-primary/10 hover:border-primary/40"
-              aria-label="Lihat katalog server Minecraft lainnya"
-            >
-              Katalog Server Lain ➔
-            </a>
+            <div className="flex flex-wrap items-center gap-2">
+              <a
+                href={SERVER_CONFIG.developer.portfolioUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary hover:text-white transition-all duration-300 font-bold font-sans text-xs flex items-center gap-1 border border-primary/20 bg-primary/5 px-2.5 py-0.5 rounded shadow-sm shadow-primary/5 hover:bg-primary/10 hover:border-primary/40"
+                aria-label="Lihat katalog server Minecraft lainnya"
+              >
+                Katalog Server Lain ➔
+              </a>
+              <a
+                href={SERVER_CONFIG.developer.communityUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-emerald-400 hover:text-white transition-all duration-300 font-bold font-sans text-xs flex items-center gap-1 border border-emerald-500/20 bg-emerald-500/5 px-2.5 py-0.5 rounded shadow-sm shadow-emerald-500/5 hover:bg-emerald-500/10 hover:border-emerald-500/40"
+                aria-label={`Gabung ${SERVER_CONFIG.developer.communityName}`}
+              >
+                Komunitas Dev 👥
+              </a>
+            </div>
           </div>
         </div>
       </div>

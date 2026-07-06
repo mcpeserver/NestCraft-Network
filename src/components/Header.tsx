@@ -65,8 +65,8 @@ export default function Header({ onCopyIp }: HeaderProps) {
             {SERVER_CONFIG.developer.whatsapp}
           </a>
         </p>
-        <div className="flex items-center">
-          <span className="text-text-secondary font-mono text-xs hidden sm:inline mr-2">•</span>
+        <div className="flex flex-wrap items-center justify-center gap-2">
+          <span className="text-text-secondary font-mono text-xs hidden sm:inline">•</span>
           <a 
             href={SERVER_CONFIG.developer.portfolioUrl} 
             target="_blank" 
@@ -74,7 +74,17 @@ export default function Header({ onCopyIp }: HeaderProps) {
             className="inline-flex items-center gap-1 text-primary hover:text-white transition-all duration-300 border border-primary/40 bg-primary/10 hover:bg-primary px-2.5 py-0.5 rounded text-[9px] sm:text-[10px] font-bold tracking-wider font-sans uppercase shadow-sm shadow-primary/10"
             aria-label="Lihat katalog server Minecraft lainnya"
           >
-            {SERVER_CONFIG.developer.portfolioLabel} ➔
+            {SERVER_CONFIG.developer.portfolioLabel}
+          </a>
+          <span className="text-text-secondary font-mono text-xs hidden sm:inline">•</span>
+          <a 
+            href={SERVER_CONFIG.developer.communityUrl} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="inline-flex items-center gap-1 text-emerald-400 hover:text-white transition-all duration-300 border border-emerald-500/40 bg-emerald-500/10 hover:bg-emerald-500 px-2.5 py-0.5 rounded text-[9px] sm:text-[10px] font-bold tracking-wider font-sans uppercase shadow-sm shadow-emerald-500/10"
+            aria-label={`Bergabung ke ${SERVER_CONFIG.developer.communityName}`}
+          >
+            {SERVER_CONFIG.developer.communityLabel}
           </a>
         </div>
       </div>
