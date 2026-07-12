@@ -1,27 +1,29 @@
 import React from "react";
 import { Play, Info, Layers, ChevronDown } from "lucide-react";
 import { motion } from "motion/react";
-import { SERVER_CONFIG } from "../config/serverConfig";
+import { useServerConfig } from "../context/ServerConfigContext";
 
 interface HeroProps {
   onCopyIp: (ip: string) => void;
 }
 
 export default function Hero({ onCopyIp }: HeroProps) {
+  const { config, navigateToPage } = useServerConfig();
+
   const handleMainSekarangClick = () => {
-    onCopyIp(SERVER_CONFIG.javaIp);
-    const element = document.getElementById("server-info");
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
+    onCopyIp(config.javaIp);
+    navigateToPage("info");
   };
 
   const scrollToGameModes = () => {
-    const element = document.getElementById("game-modes");
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
+    navigateToPage("home", "game-modes");
   };
+
+  // Split name for visual layout (e.g., "NestCraft Network" -> "NESTCRAFT" and "NETWORK")
+  const serverNameParts = config.name.split(" ");
+  const serverFirstWord = serverNameParts[0] || "NESTCRAFT";
+  const serverRemainingWords = serverNameParts.slice(1).join(" ") || "NETWORK";
+
 
   return (
     <section 
@@ -32,7 +34,7 @@ export default function Hero({ onCopyIp }: HeroProps) {
       {/* Live Cinematic Minecraft Background Image */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-[0.28] mix-blend-screen pointer-events-none z-0"
-        style={{ backgroundImage: "url('/hero-bg.jpg')" }}
+        style={{ backgroundImage: `url('${config.heroImage}')` }}
       />
       <div className="absolute inset-0 bg-gradient-to-b from-bg-dark/40 via-bg-dark/80 to-bg-dark z-0 pointer-events-none" />
 
@@ -65,8 +67,8 @@ export default function Hero({ onCopyIp }: HeroProps) {
           <div className="absolute inset-0 rounded-full bg-primary/20 blur-xl opacity-70 group-hover:bg-primary/30 transition-all duration-500 scale-95" />
           
           <img
-            src="/logo.png"
-            alt="NestCraft Network Primary Logo"
+            src={config.logo}
+            alt={`${config.name} Primary Logo`}
             referrerPolicy="no-referrer"
             className="h-32 w-32 md:h-44 md:w-44 object-contain rounded-2xl relative z-10 red-glow-logo transform transition-all duration-500 group-hover:scale-[1.03]"
           />
@@ -81,7 +83,7 @@ export default function Hero({ onCopyIp }: HeroProps) {
         >
           <Layers className="h-3.5 w-3.5 text-primary" />
           <span className="text-[10px] md:text-xs font-mono font-bold tracking-widest text-primary uppercase">
-            MULTI-GAME MODE NETWORK
+            {config.tagline}
           </span>
         </motion.div>
 
@@ -90,9 +92,9 @@ export default function Hero({ onCopyIp }: HeroProps) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.6 }}
-          className="font-display font-extrabold text-4xl sm:text-6xl md:text-7xl tracking-tighter text-white uppercase leading-none mb-4"
+          className="font-display font-extrabold text-4xl sm:text-6xl md:text-7xl tracking-tighter text-white uppercase leading-none mb-4 text-center"
         >
-          NESTCRAFT <span className="text-primary block md:inline">NETWORK</span>
+          {serverFirstWord} <span className="text-primary block md:inline">{serverRemainingWords}</span>
         </motion.h1>
 
         {/* Tagline / Welcome Description */}
@@ -100,9 +102,9 @@ export default function Hero({ onCopyIp }: HeroProps) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.6 }}
-          className="text-lg md:text-2xl font-medium text-white max-w-2xl mb-6 tracking-wide"
+          className="text-lg md:text-2xl font-medium text-white max-w-2xl mb-6 tracking-wide text-center"
         >
-          Selamat Datang di NestCraft Network Server
+          {config.description}
         </motion.p>
 
         {/* Network multi-mode description summary */}
@@ -110,9 +112,9 @@ export default function Hero({ onCopyIp }: HeroProps) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.6 }}
-          className="text-sm md:text-base text-text-secondary max-w-xl mb-10 leading-relaxed font-sans"
+          className="text-sm md:text-base text-text-secondary max-w-xl mb-10 leading-relaxed font-sans text-center"
         >
-          Sebuah ekosistem gaming modern Minecraft Indonesia. Kami menyediakan berbagai pilihan game mode terpopuler—termasuk Survival, PvP, OneBlock, SkyBlock, Creative, dan Parkour—yang dirancang untuk performa server terbaik, bebas lag, dan komunitas yang ramah.
+          {config.about}
         </motion.p>
 
         {/* Action Buttons */}

@@ -1,6 +1,6 @@
 import React from "react";
 import * as Icons from "lucide-react";
-import { SERVER_CONFIG } from "../config/serverConfig";
+import { useServerConfig } from "../context/ServerConfigContext";
 import { motion } from "motion/react";
 
 // Helper to resolve Lucide Icon components dynamically
@@ -13,6 +13,8 @@ const resolveIcon = (iconName: string) => {
 };
 
 export default function GameModes() {
+  const { config } = useServerConfig();
+
   return (
     <section 
       id="game-modes" 
@@ -36,7 +38,7 @@ export default function GameModes() {
 
         {/* Game Modes Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {SERVER_CONFIG.gameModes.map((mode, index) => (
+          {config.gameModes.map((mode, index) => (
             <motion.div
               key={mode.id}
               initial={{ opacity: 0, y: 30 }}

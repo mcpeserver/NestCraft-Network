@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Copy, Check, Server, Radio, Users, Cpu, ShieldAlert, ArrowRight } from "lucide-react";
-import { SERVER_CONFIG } from "../config/serverConfig";
+import { useServerConfig } from "../context/ServerConfigContext";
 
 interface ServerInfoProps {
   onCopyIp: (ip: string) => void;
@@ -16,6 +16,7 @@ interface ServerStatus {
 }
 
 export default function ServerInfo({ onCopyIp }: ServerInfoProps) {
+  const { config } = useServerConfig();
   const [copiedJava, setCopiedJava] = useState(false);
   const [copiedBedrock, setCopiedBedrock] = useState(false);
 
@@ -45,7 +46,7 @@ export default function ServerInfo({ onCopyIp }: ServerInfoProps) {
     const fetchServerStatus = async () => {
       try {
         // Fetch Java Status
-        const javaRes = await fetch(`https://api.mcstatus.io/v2/status/java/${SERVER_CONFIG.javaIp}`);
+        const javaRes = await fetch(`https://api.mcstatus.io/v2/status/java/${config.javaIp}`);
         if (javaRes.ok) {
           const javaData = await javaRes.json();
           if (isMounted) {
@@ -70,7 +71,7 @@ export default function ServerInfo({ onCopyIp }: ServerInfoProps) {
       try {
         // Fetch Bedrock Status
         const bedrockRes = await fetch(
-          `https://api.mcstatus.io/v2/status/bedrock/${SERVER_CONFIG.bedrockIp}:${SERVER_CONFIG.bedrockPort}`
+          `https://api.mcstatus.io/v2/status/bedrock/${config.bedrockIp}:${config.bedrockPort}`
         );
         if (bedrockRes.ok) {
           const bedrockData = await bedrockRes.json();
@@ -102,16 +103,16 @@ export default function ServerInfo({ onCopyIp }: ServerInfoProps) {
       isMounted = false;
       clearInterval(interval);
     };
-  }, []);
+  }, [config.javaIp, config.bedrockIp, config.bedrockPort]);
 
   const handleCopyJava = () => {
-    onCopyIp(SERVER_CONFIG.javaIp);
+    onCopyIp(config.javaIp);
     setCopiedJava(true);
     setTimeout(() => setCopiedJava(false), 2000);
   };
 
   const handleCopyBedrock = () => {
-    onCopyIp(`${SERVER_CONFIG.bedrockIp}:${SERVER_CONFIG.bedrockPort}`);
+    onCopyIp(`${config.bedrockIp}:${config.bedrockPort}`);
     setCopiedBedrock(true);
     setTimeout(() => setCopiedBedrock(false), 2000);
   };
@@ -133,7 +134,7 @@ export default function ServerInfo({ onCopyIp }: ServerInfoProps) {
           </h2>
           <div className="w-16 h-1 bg-primary mx-auto mb-6 rounded-full" />
           <p className="text-sm md:text-base text-text-secondary max-w-2xl mx-auto">
-            Gunakan informasi koneksi di bawah ini untuk bergabung dengan NestCraft Network. Server kami mendukung penuh cross-play antar platform Java & Bedrock Edition secara simultan.
+            Gunakan informasi koneksi di bawah ini untuk bergabung dengan {config.name}. Server kami mendukung penuh cross-play antar platform Java & Bedrock Edition secara simultan.
           </p>
         </div>
 
@@ -202,7 +203,7 @@ export default function ServerInfo({ onCopyIp }: ServerInfoProps) {
                   IP ADDRESS JAVA:
                 </label>
                 <div className="flex items-center justify-between gap-3 bg-[#121212] border border-border-dark p-3.5 rounded-md font-mono text-white text-sm md:text-base font-medium relative group">
-                  <span className="select-all tracking-wide">{SERVER_CONFIG.javaIp}</span>
+                  <span className="select-all tracking-wide">{config.javaIp}</span>
                   <button
                     onClick={handleCopyJava}
                     className="p-1.5 rounded hover:bg-surface-dark text-text-secondary hover:text-white transition-all cursor-pointer"
@@ -290,7 +291,7 @@ export default function ServerInfo({ onCopyIp }: ServerInfoProps) {
                     IP ADDRESS BEDROCK:
                   </label>
                   <div className="flex items-center justify-between gap-2 bg-[#121212] border border-border-dark p-3.5 rounded-md font-mono text-white text-sm md:text-base font-medium">
-                    <span className="select-all truncate tracking-wide">{SERVER_CONFIG.bedrockIp}</span>
+                    <span className="select-all truncate tracking-wide">{config.bedrockIp}</span>
                   </div>
                 </div>
                 <div>
@@ -298,7 +299,7 @@ export default function ServerInfo({ onCopyIp }: ServerInfoProps) {
                     PORT BEDROCK:
                   </label>
                   <div className="flex items-center justify-between bg-[#121212] border border-border-dark p-3.5 rounded-md font-mono text-white text-sm md:text-base font-semibold text-center justify-center">
-                    <span className="select-all text-primary">{SERVER_CONFIG.bedrockPort}</span>
+                    <span className="select-all text-primary">{config.bedrockPort}</span>
                   </div>
                 </div>
               </div>
@@ -320,7 +321,7 @@ export default function ServerInfo({ onCopyIp }: ServerInfoProps) {
         <div className="glass-panel p-6 sm:p-8 rounded-xl bg-surface-dark/20 border border-border-dark/50">
           <h4 className="font-display font-bold text-lg text-white uppercase tracking-tight mb-4 flex items-center gap-2">
             <span className="h-2 w-2 rounded-full bg-primary" />
-            CARA BERGABUNG DENGAN NESTCRAFT NETWORK
+            CARA BERGABUNG DENGAN {config.name.toUpperCase()}
           </h4>
           <ol className="space-y-4 text-sm text-text-secondary leading-relaxed font-sans list-none">
             <li className="flex gap-4">
@@ -338,13 +339,13 @@ export default function ServerInfo({ onCopyIp }: ServerInfoProps) {
             <li className="flex gap-4">
               <span className="font-mono text-primary font-bold">03.</span>
               <div>
-                <strong className="text-white">Masukkan Alamat Server</strong> — Isi nama server dengan <code className="text-white font-mono text-xs font-semibold">NestCraft</code>, dan alamat server dengan <code className="text-primary font-mono text-xs font-semibold">{SERVER_CONFIG.javaIp}</code>. Untuk Bedrock, pastikan Port diisi <code className="text-primary font-mono text-xs font-semibold">{SERVER_CONFIG.bedrockPort}</code>.
+                <strong className="text-white">Masukkan Alamat Server</strong> — Isi nama server dengan <code className="text-white font-mono text-xs font-semibold">{config.name}</code>, and alamat server dengan <code className="text-primary font-mono text-xs font-semibold">{config.javaIp}</code>. Untuk Bedrock, pastikan Port diisi <code className="text-primary font-mono text-xs font-semibold">{config.bedrockPort}</code>.
               </div>
             </li>
             <li className="flex gap-4">
               <span className="font-mono text-primary font-bold">04.</span>
               <div>
-                <strong className="text-white">Simpan dan Mainkan</strong> — Klik Simpan/Done, lalu pilih server NestCraft dari daftar server Anda dan klik <strong className="text-white">Join Server</strong>!
+                <strong className="text-white">Simpan dan Mainkan</strong> — Klik Simpan/Done, lalu pilih server {config.name} dari daftar server Anda dan klik <strong className="text-white">Join Server</strong>!
               </div>
             </li>
           </ol>

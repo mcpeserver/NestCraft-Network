@@ -11,8 +11,10 @@ import ServerInfo from "./components/ServerInfo";
 import DiscordCTA from "./components/DiscordCTA";
 import Footer from "./components/Footer";
 import Toast from "./components/Toast";
+import { ServerConfigProvider, useServerConfig } from "./context/ServerConfigContext";
 
-export default function App() {
+function MainAppContent() {
+  const { activePage } = useServerConfig();
   const [isToastOpen, setIsToastOpen] = useState(false);
   const [copiedMessage, setCopiedMessage] = useState("");
 
@@ -23,7 +25,6 @@ export default function App() {
         setIsToastOpen(true);
       })
       .catch(() => {
-        // Fallback if browser permission is blocked
         console.error("Gagal menyalin teks.");
       });
   };
@@ -36,19 +37,31 @@ export default function App() {
       {/* Navigation and Top Credit Header */}
       <Header onCopyIp={handleCopyIp} />
 
-      {/* Main Sections */}
+      {/* Main Sections - Conditionally rendered to prevent DOM overload and guarantee zero lag */}
       <main className="flex-grow">
-        {/* Hero Section */}
-        <Hero onCopyIp={handleCopyIp} />
+        {activePage === "home" && (
+          <div className="animate-fade-in">
+            {/* Hero Section */}
+            <Hero onCopyIp={handleCopyIp} />
 
-        {/* Game Modes Cards */}
-        <GameModes />
+            {/* Game Modes Cards */}
+            <GameModes />
+          </div>
+        )}
 
-        {/* IP Addresses & Server Specs */}
-        <ServerInfo onCopyIp={handleCopyIp} />
+        {activePage === "info" && (
+          <div className="animate-fade-in pt-24 md:pt-32">
+            {/* IP Addresses & Server Specs */}
+            <ServerInfo onCopyIp={handleCopyIp} />
+          </div>
+        )}
 
-        {/* Discord Social Community CTA */}
-        <DiscordCTA />
+        {activePage === "discord" && (
+          <div className="animate-fade-in pt-24 md:pt-32">
+            {/* Discord Social Community CTA */}
+            <DiscordCTA />
+          </div>
+        )}
       </main>
 
       {/* Footer & Watermark Credit */}
@@ -63,3 +76,12 @@ export default function App() {
     </div>
   );
 }
+
+export default function App() {
+  return (
+    <ServerConfigProvider>
+      <MainAppContent />
+    </ServerConfigProvider>
+  );
+}
+

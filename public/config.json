@@ -1,0 +1,64 @@
+{
+  "name": "NestCraft Network",
+  "tagline": "Modern Gaming Network",
+  "description": "Selamat Datang di NestCraft Network Server",
+  "about": "NestCraft Network adalah server Minecraft Indonesia premium yang menggabungkan beberapa mode permainan terbaik dalam satu jaringan server yang stabil, cepat, dan ramah bagi semua pemain Java & Bedrock.",
+  "javaIp": "minenest.my.id",
+  "bedrockIp": "minenest.my.id",
+  "bedrockPort": "25441",
+  "discordUrl": "https://discord.gg/p5PM3NTh7",
+  "developer": {
+    "name": "RAN DEV",
+    "whatsapp": "0895602592430",
+    "whatsappUrl": "https://wa.me/62895602592430",
+    "portfolioUrl": "https://sfl.gl/x2ic",
+    "portfolioLabel": "Lihat Katalog Server Lain 🌐",
+    "communityName": "MCPE Server Indonesia",
+    "communityUrl": "https://discord.gg/9KUN2byKRM",
+    "communityLabel": "Komunitas Developer 👥"
+  },
+  "gameModes": [
+    {
+      "id": "survival",
+      "title": "Survival",
+      "description": "Petualangan bertahan hidup klasik dengan fitur ekonomi modern, klaim wilayah, clan, dan komunitas yang sangat bersahabat.",
+      "iconName": "Shield",
+      "tag": "Semi-RPG"
+    },
+    {
+      "id": "pvp",
+      "title": "PvP",
+      "description": "Uji mekanik dan ketangkasan bertarungmu di arena kompetitif, kit battle, duel 1v1, serta sistem ranking musiman.",
+      "iconName": "Swords",
+      "tag": "Kompetitif"
+    },
+    {
+      "id": "oneblock",
+      "title": "OneBlock",
+      "description": "Mulai petualangan ekstrem dari satu blok di langit yang terus membesar saat dihancurkan, bangun impianmu di angkasa.",
+      "iconName": "Box",
+      "tag": "Populer"
+    },
+    {
+      "id": "skyblock",
+      "title": "SkyBlock",
+      "description": "Kelola pulau melayang mandiri dengan sumber daya terbatas, selesaikan misi harian, dan jadilah pulau dengan level tertinggi.",
+      "iconName": "Cloud",
+      "tag": "Klasik"
+    },
+    {
+      "id": "creative",
+      "title": "Creative",
+      "description": "Wujudkan imajinasi arsitektur terbaikmu tanpa batasan sumber daya menggunakan plot kreatif dan worldedit lengkap.",
+      "iconName": "Compass",
+      "tag": "Kreatif"
+    },
+    {
+      "id": "parkour",
+      "title": "Parkour",
+      "description": "Lompati berbagai rintangan dari tingkat kesulitan pemula hingga ahli untuk mencatat waktu tercepat di papan peringkat.",
+      "iconName": "Zap",
+      "tag": "Ketangkasan"
+    }
+  ]
+}

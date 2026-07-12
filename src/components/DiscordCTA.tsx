@@ -1,9 +1,11 @@
 import React from "react";
 import { MessageSquare, ArrowUpRight, Users } from "lucide-react";
-import { SERVER_CONFIG } from "../config/serverConfig";
+import { useServerConfig } from "../context/ServerConfigContext";
 import { motion } from "motion/react";
 
 export default function DiscordCTA() {
+  const { config } = useServerConfig();
+
   return (
     <section 
       id="discord-cta" 
@@ -49,17 +51,17 @@ export default function DiscordCTA() {
 
           {/* Description */}
           <p className="text-sm sm:text-base text-text-secondary max-w-xl mb-10 leading-relaxed font-sans">
-            Jadilah bagian dari komunitas game NestCraft Network yang terus berkembang! Dapatkan pengumuman terbaru, ikuti event-event seru server, diskusikan strategi permainan dengan member lain, atau hubungi tim bantuan kapan saja.
+            Jadilah bagian dari komunitas game {config.name} yang terus berkembang! Dapatkan pengumuman terbaru, ikuti event-event seru server, diskusikan strategi permainan dengan member lain, atau hubungi tim bantuan kapan saja.
           </p>
 
           {/* CTA Action Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 items-center justify-center w-full">
             <a
-              href={SERVER_CONFIG.discordUrl}
+              href={config.discordUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-2.5 px-8 py-4 rounded-md bg-[#5865F2] hover:bg-[#4752C4] text-white font-display font-bold tracking-wider hover:shadow-xl hover:shadow-[#5865F2]/20 transition-all duration-300 w-full sm:w-auto transform hover:-translate-y-0.5"
-              aria-label="Bergabung dengan Discord NestCraft Network"
+              aria-label={`Bergabung dengan Discord ${config.name}`}
               id="btn-join-discord"
             >
               <Users className="h-5 w-5" />
